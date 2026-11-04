@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import config
 import tmdb
-from auth import APIKeyMiddleware
 from i18n import i18n
 from routes import router
 
@@ -22,7 +21,6 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title=config.NAME, version=config.VERSION, lifespan=lifespan)
 
 
-app.add_middleware(APIKeyMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

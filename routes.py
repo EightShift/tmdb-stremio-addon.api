@@ -11,7 +11,6 @@ import controllers
 from controllers import i18n
 from tmdb import KINDS
 import utils
-from auth import key_prefix
 
 router = APIRouter(tags=['stremio'])
 
@@ -20,7 +19,7 @@ RTL = {'ar', 'he', 'fa', 'ur'}
 
 
 def _base_url(request: Request) -> str:
-    return (config.PUBLIC_URL or str(request.base_url).rstrip('/')) + key_prefix(request)
+    return (config.PUBLIC_URL or str(request.base_url).rstrip('/'))
 
 
 def _lang(language: str, strict: bool = False) -> str:
